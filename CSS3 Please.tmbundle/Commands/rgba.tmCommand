@@ -24,7 +24,7 @@ ie = (opacity.to_f * 255).round.to_i.to_s(16) + color.to_s
 rules = &lt;&lt;-RULES
 background-color: ##{color};
 background-color: rgba(#{r}, #{g}, #{b}, #{opacity});  /* FF3+, Saf3+, Opera 10.10+, Chrome */
-filter:  progid:DXImageTransform.Microsoft.gradient(startColorStr='##{ie}',EndColorStr='##{ie}'); /* IE6,IE7 
+filter:  progid:DXImageTransform.Microsoft.gradient(startColorStr='##{ie}',EndColorStr='##{ie}'); /* IE6,IE7 */
 -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr='##{ie}',EndColorStr='##{ie}')"; /* IE8  */
 $0
 RULES
