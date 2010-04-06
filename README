@@ -1,0 +1,16 @@
+h1. CSS3 Please.tmbundle
+
+Simple TM Bundle with a bunch of snippets taken from "css3please.com":http://www.css3please.com/ to make it easy to write "cross browser" css3 rules
+
+h2. Snippets Included (tab trigger):
+* border-radius (borderrad)
+* box-shadow (boxshadow)
+* rgba (rgba)
+* background-gradient (bggradient)
+* transition (transition)
+* rotate (rotate)
+* font-face (fontface)
+
+
+h3. TODO
+* add direction options to background-gradient

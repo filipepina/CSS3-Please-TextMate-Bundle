@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>beforeRunningCommand</key>
+	<string>nop</string>
+	<key>command</key>
+	<string>#!/usr/bin/env ruby
+require ENV['TM_SUPPORT_PATH'] + '/lib/ui'
+
+deg = TextMate::UI.request_string(:title =&gt; "Transform Rotate", :prompt =&gt; "Degrees", :default =&gt; "7.5")
+
+deg2radians = Math::PI * 2 / 360
+rad = deg.to_f * deg2radians
+costheta = Math.cos(rad)
+sintheta = Math.sin(rad)
+
+M11 = costheta
+M12 = -sintheta
+M21 = sintheta
+M22 = costheta
+
+rules = &lt;&lt;-RULES
+-moz-transform: rotate(#{deg}deg);  /* FF3.5+ */
+-o-transform: rotate(#{deg}deg);  /* Opera 10.5 */
+-webkit-transform: rotate(#{deg}deg);  /* Saf3.1+, Chrome */
+filter:  progid:DXImageTransform.Microsoft.Matrix(sizingMethod='auto expand', 
+                     M11=#{M11}, M12=-#{M12}, M21=#{M21}, M22=#{M22}); /* IE6,IE7 */
+-ms-filter: "progid:DXImageTransform.Microsoft.Matrix(SizingMethod='auto expand', 
+                     M11=#{M11}, M12=-#{M12}, M21=#{M21}, M22=#{M22})"; /* IE8 */
+zoom: 1;
+$0
+RULES
+
+puts rules</string>
+	<key>input</key>
+	<string>none</string>
+	<key>name</key>
+	<string>rotate</string>
+	<key>output</key>
+	<string>insertAsSnippet</string>
+	<key>scope</key>
+	<string>source.css</string>
+	<key>tabTrigger</key>
+	<string>rotate</string>
+	<key>uuid</key>
+	<string>253FF0E3-A404-4697-8EAC-B79F39C8F2C2</string>
+</dict>
+</plist>
